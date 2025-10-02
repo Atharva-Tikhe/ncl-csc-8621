@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+
 
 class Car:
     TOP_SPEED = 100
@@ -12,12 +13,20 @@ class Car:
         self.__color = ""
         self.__category = ""
         self.speed = 0
+        self.age = self.__calculate_age()
 
     def __calculate_age(self):
-
+        return int(datetime.now().year) - int(self.year)
 
     def __str__(self):
-        return f"Car({self.year}, {self.make}, {self.get_color()}, {self.get_category()})"
+        return (
+            f"Car({self.year}, {self.make}, {self.get_color()}, {self.get_category()})"
+        )
+
+    def __repr__(self):
+        return (
+            f"Car({self.year}, {self.make}, {self.get_color()}, {self.get_category()})"
+        )
 
     def accelerate(self):
         if self.speed < Car.TOP_SPEED:
@@ -35,15 +44,11 @@ class Car:
     def get_color(self):
         return self.__color
 
-    def set_color(self, color):
-        self.__color = color
-
     def get_category(self):
         return self.__category
 
+    def set_color(self, color):
+        self.__color = color
+
     def set_category(self, category):
         self.__category = category
-
-
-
-
