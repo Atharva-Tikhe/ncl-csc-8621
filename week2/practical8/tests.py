@@ -9,7 +9,7 @@ from rectangle import Rectangle
 class TestPoint(unittest.TestCase):
 
     def test_point_str(self):
-        """Exercise 1"""
+        """Test for Exercise 1: testing `Point` repr and str"""
         p = Point(2, 1)
         self.assertEqual(p.__repr__(), "Point(x=2,y=1)")
         self.assertEqual(p.__str__(), "Point(x = 2, y = 1)")
@@ -22,10 +22,12 @@ class TestRectangle(unittest.TestCase):
         self.r = Rectangle(Point(1, 1), 2, 3)
 
     def test_init(self):
+        """Test for Exercise 2: testing init of `Rectangle` obj"""
         with self.assertRaises(TypeError):
             self.r = Rectangle((1, 1), 2, 3)
 
     def test_membership(self):
+        """Test for Exercise 2: testing membership using `Point` in `Rectangle`"""
         self.assertTrue(Point(1, 1) in self.r)
         self.assertTrue(Point(1, 0) in self.r)
         self.assertFalse(Point(0, 3) in self.r)
