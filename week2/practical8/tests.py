@@ -34,6 +34,7 @@ class TestRectangle(unittest.TestCase):
         self.assertFalse(Point(3, 0) in self.r)
 
     def test_area(self):
+        """Test for Exercise 2: testing area calculation for `Rectangle`"""
         self.assertEqual(self.r.area(), 6)
 
     def test_perimeter(self):
