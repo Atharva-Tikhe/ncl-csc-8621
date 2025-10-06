@@ -1,0 +1,23 @@
+name: Run Python Unit Tests
+
+on:
+  push:
+    paths:
+      - "tests.py"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"  # adjust if needed
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -v week2/practical8
