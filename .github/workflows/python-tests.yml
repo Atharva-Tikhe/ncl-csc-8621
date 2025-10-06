@@ -3,7 +3,7 @@ name: Run Python Unit Tests
 on:
   push:
     paths:
-      - "tests.py"
+      - "week2/practical8/tests.py"
   workflow_dispatch:
 
 jobs:
