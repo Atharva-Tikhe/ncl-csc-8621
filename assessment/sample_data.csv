@@ -1,0 +1,11 @@
+text,option_a,option_b,option_c,option_d,answers,marks_per_answer,topic,last_attempt
+How do you concatenate two strings in Python?,str1 . Str2,str1 + str2,"str1 , str2","concat(str1, str2)",b,1,python,TRUE
+How do you create a multiline string in Python?,"""This is a multiline string""",'This is a multiline string',"""""""This is a multiline string""""""",(a and b),c,1,python,True
+How do you convert a floating-point number to an integer in Python?,int(number),float_to_int(number),number.int(),"convert(int, number)",a,1,python,FALSE
+What is the purpose of the enumerate() function in Python?,To get the index and value of each item in an iterable,To count the occurrences of an element in an iterable,To enumerate through a list,To enumerate through a dictionary,a,1,python,FALSE
+How do you find the length of a list in Python?,len(list),length(list),list.length(),count(list),a,1,python,FALSE
+What is 150% of 100?,150,50,100,200,a,1,maths,TRUE
+"What is the next number in the sequence: 2, 4, 6, 8, ...?",9,10,12,11,b,1,maths,FALSE
+What is the sum of 20 and 15?,35,30,25,40,a,1,maths,FALSE
+What is 10 times 10?,100,1000,10,20,a,1,maths,FALSE
+What is the square root of 81?,7,9,8,19,b,1,maths,FALSE
