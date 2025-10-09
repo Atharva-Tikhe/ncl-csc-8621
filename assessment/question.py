@@ -7,7 +7,14 @@ class Question:
             raise TypeError(f"`text` should be a string. Got: {type(text)}")
 
         if type(options) is dict:
-            self.options = options
+            key_types = [isinstance(obj, str) for obj in options.keys()]
+            value_types = [isinstance(obj, str) for obj in options.values()]
+            if False in key_types or False in value_types:
+                raise ValueError(
+                    f"dictionary keys and values are supposed to be string. Got: keys: {options.keys()}\t values: {options.values()}"
+                )
+            else:
+                self.options = options
         else:
             raise TypeError(f"`options` should be a dictionary. Got: {type(options)}")
 
@@ -89,7 +96,6 @@ class Question:
             return False
 
     def __hash__(self):
-        """Confirm with Dr. Warrender: https://docs.python.org/3.5/reference/datamodel.html#object.__hash__"""
         return hash(
             (
                 self.text,
@@ -104,6 +110,35 @@ class Question:
             return self.marks_per_answer * len(self.answers)
         else:
             return self.marks_per_answer
+
+    def to_dict(self):
+        """UTILITY FUNCTION : to convert list of questions to a dictionary, unpacks options and answers"""
+        option_a, option_b, option_c, option_d = list(self.get_options().values())
+        answers = list(self.get_answers())[0]
+        temp_dict = dict.fromkeys(
+            [
+                "text",
+                "option_a",
+                "option_b",
+                "option_c",
+                "option_d",
+                "answers",
+                "marks_per_answer",
+                "topic",
+                "last_attempt",
+            ]
+        )
+        temp_dict["text"] = self.get_text()
+        temp_dict["option_a"] = option_a
+        temp_dict["option_b"] = option_b
+        temp_dict["option_c"] = option_c
+        temp_dict["option_d"] = option_d
+        temp_dict["answers"] = answers
+        temp_dict["marks_per_answer"] = self.get_marks_per_answer()
+        temp_dict["topic"] = self.get_topic()
+        temp_dict["last_attempt"] = self.get_last_attempt()
+
+        return temp_dict
 
 
 if __name__ == "__main__":
@@ -138,7 +173,7 @@ if __name__ == "__main__":
 
     q2 = Question(
         "What is 1+1?",
-        {"a": "11", "b": "2", "c": "1", "d": "10"},
+        {"a": 11, "b": "2", "c": "1", "d": "10"},
         {"b"},
         1,
         "maths",
